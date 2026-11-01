@@ -1,0 +1,818 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Николай Горелков — автор современных романов</title>
+
+<style>
+:root {
+    --gold: #f6d28a;
+    --red: #b20d08;
+    --bg: #080606;
+    --line: #9d6b32;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+    margin: 0;
+    color: #fff;
+    background:
+        radial-gradient(ellipse at 15% 30%, #35140d 0, transparent 36%),
+        radial-gradient(ellipse at 90% 80%, #390d09 0, transparent 35%),
+        #080606;
+    font-family: Georgia, "Times New Roman", serif;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.wrap {
+    max-width: 1500px;
+    margin: auto;
+    padding: 0 24px;
+}
+
+header {
+    position: relative;
+    min-height: 265px;
+    border-bottom: 1px solid #6b4828;
+    background:
+        linear-gradient(90deg, rgba(0,0,0,.25), #050505 30%, rgba(0,0,0,.35)),
+        radial-gradient(ellipse at 80% 75%, #613016, transparent 35%);
+    overflow: hidden;
+}
+
+.author-photo {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 310px;
+    height: 260px;
+    object-fit: cover;
+    object-position: center 18%;
+    mask-image: linear-gradient(to right, #000 65%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, #000 65%, transparent 100%);
+}
+
+.brand {
+    margin-left: 290px;
+    text-align: center;
+    padding: 8px 12px 0;
+}
+
+.brand h1 {
+    margin: 0;
+    color: var(--gold);
+    font-size: clamp(30px, 4vw, 58px);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    text-shadow: 0 2px 8px #000;
+}
+
+.brand p {
+    margin: 0;
+    color: #f7dfb1;
+    letter-spacing: 7px;
+    font-size: 17px;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0;
+    margin: 8px 0 0 260px;
+    border-top: 1px solid #4b3020;
+    border-bottom: 1px solid #4b3020;
+    background: #080606d9;
+}
+
+nav a {
+    padding: 12px 20px;
+    font-size: 18px;
+    transition: .25s;
+}
+
+nav a:hover {
+    background: linear-gradient(#8d0805, #300603);
+    color: var(--gold);
+}
+
+.tagline {
+    max-width: 750px;
+    margin: 17px auto 20px;
+    text-align: center;
+    color: #f5d9a8;
+    font-size: clamp(20px, 2.2vw, 30px);
+    font-style: italic;
+    text-shadow: 0 2px 5px #000;
+}
+
+.tagline:after {
+    content: "";
+    display: block;
+    width: 40%;
+    height: 3px;
+    margin: 15px auto;
+    background: #c20d0d;
+    border-radius: 50%;
+    transform: rotate(-2deg);
+}
+
+main { padding: 0 0 24px; }
+
+.columns {
+    display: grid;
+    grid-template-columns: 1.25fr 1fr;
+    gap: 34px;
+}
+
+.section-title {
+    font-size: 32px;
+    margin: 0 0 12px;
+    padding-bottom: 8px;
+    color: #fff;
+    border-bottom: 3px solid #a70d0b;
+    text-shadow: 0 2px 5px #000;
+}
+
+.section-title span {
+    color: var(--gold);
+    margin-right: 12px;
+}
+
+.books {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.book {
+    position: relative;
+    border: 2px solid var(--gold);
+    border-radius: 14px;
+    overflow: hidden;
+    min-height: 270px;
+    background: #160c09;
+    box-shadow: 0 0 12px #000;
+}
+
+.book img {
+    width: 100%;
+    height: 100%;
+    min-height: 270px;
+    object-fit: cover;
+    display: block;
+}
+
+.book a {
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    padding: 8px 15px;
+    border: 1px solid #d49a55;
+    border-radius: 9px;
+    background: linear-gradient(#a5100b, #410502);
+    box-shadow: 0 2px 8px #000;
+    font-size: 15px;
+}
+
+.book a:hover { filter: brightness(1.25); }
+
+.video-feature {
+    position: relative;
+    border: 2px solid var(--gold);
+    border-radius: 14px;
+    overflow: hidden;
+    margin-bottom: 14px;
+    background: #160c09;
+}
+
+.video-feature video {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+}
+
+.video-thumbs {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+
+.video-thumbs video {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border: 1px solid #b98b55;
+    border-radius: 10px;
+    background: #160c09;
+}
+
+.features {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin-top: 20px;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    padding: 14px 0;
+}
+
+.feature {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    justify-content: center;
+    padding: 4px 12px;
+    border-right: 1px solid var(--line);
+}
+
+.feature:last-child { border: 0; }
+
+.feature .ico {
+    font-size: 34px;
+    color: var(--gold);
+}
+
+.feature strong {
+    display: block;
+    font-size: 19px;
+}
+
+.feature small {
+    display: block;
+    color: var(--gold);
+    font-size: 14px;
+    margin-top: 3px;
+}
+
+#about,
+#contacts,
+#news {
+    padding: 30px 0;
+    border-bottom: 1px solid #6b4828;
+}
+
+.about {
+    max-width: 900px;
+    line-height: 1.7;
+    font-size: 18px;
+    color: #eadcc8;
+}
+
+.contact-links a {
+    color: var(--gold);
+    font-size: 19px;
+    text-decoration: underline;
+}
+
+.contact-links a:hover { color: #fff; }
+
+footer {
+    text-align: center;
+    padding: 18px;
+    color: #bda47e;
+    font-size: 14px;
+}
+
+@media (max-width: 1000px) {
+    .columns { grid-template-columns: 1fr; }
+
+    .author-photo {
+        width: 230px;
+        height: 220px;
+    }
+
+    .brand { margin-left: 210px; }
+    nav { margin-left: 0; }
+    .books { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 650px) {
+    .wrap { padding: 0 12px; }
+    header { min-height: 230px; }
+
+    .author-photo {
+        width: 130px;
+        height: 155px;
+        opacity: .9;
+        object-position: center 15%;
+    }
+
+    .brand {
+        margin-left: 90px;
+        padding-top: 15px;
+    }
+
+    .brand h1 {
+        font-size: 25px;
+        letter-spacing: 1px;
+    }
+
+    .brand p {
+        font-size: 10px;
+        letter-spacing: 2px;
+    }
+
+    nav { margin: 12px 0 0; }
+
+    nav a {
+        padding: 9px 10px;
+        font-size: 14px;
+    }
+
+    .tagline {
+        font-size: 18px;
+        margin: 15px auto;
+    }
+
+    .section-title { font-size: 25px; }
+
+    .books {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+    }
+
+    .book,
+    .book img { min-height: 230px; }
+
+    .book a {
+        font-size: 12px;
+        padding: 7px 10px;
+    }
+
+    .video-thumbs { grid-template-columns: repeat(2, 1fr); }
+
+    .features {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .feature {
+        border: 0;
+        justify-content: flex-start;
+    }
+
+    .feature strong { font-size: 16px; }
+    .feature small { font-size: 12px; }
+}
+
+/* Золотое свечение обложек */
+
+.book {
+    transition: transform .35s ease, box-shadow .35s ease, border-color .35s ease;
+}
+
+.book:hover {
+    transform: translateY(-6px) scale(1.025);
+    border-color: #ffe7a6;
+    animation: goldGlow 1.8s ease-in-out infinite alternate;
+}
+
+@keyframes goldGlow {
+    0% {
+        box-shadow: 0 0 7px rgba(255,215,130,.65),
+                    0 0 16px rgba(255,174,55,.45),
+                    0 0 28px rgba(255,115,20,.2);
+    }
+    100% {
+        box-shadow: 0 0 12px rgba(255,235,170,1),
+                    0 0 28px rgba(255,174,55,.9),
+                    0 0 45px rgba(255,115,20,.5);
+    }
+}
+
+/* Кнопка «Начать читать» */
+
+.start-reading {
+    display: table;
+    margin: 18px auto 22px;
+    padding: 15px 38px;
+    border: 1px solid #ffe7a6;
+    border-radius: 40px;
+    color: #1b0b03;
+    background: linear-gradient(135deg, #fff0bd, #e8ad4c, #ffd980);
+    font-size: 22px;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+    box-shadow: 0 0 12px rgba(255,190,75,.45),
+                0 0 25px rgba(255,150,30,.2);
+    transition: all .3s ease;
+}
+
+.start-reading:hover {
+    transform: translateY(-3px) scale(1.04);
+    box-shadow: 0 0 16px rgba(255,230,160,.9),
+                0 0 32px rgba(255,170,50,.65);
+    background: linear-gradient(135deg, #fff7d8, #f4c15e, #ffe8a0);
+}
+
+@media (max-width: 600px) {
+    .start-reading {
+        font-size: 18px;
+        padding: 12px 25px;
+    }
+}/* НОВОСТЬ О СЕДЬМОЙ КНИГЕ */
+
+.news-card {
+    position: relative;
+    max-width: 900px;
+    margin: 20px 0 8px;
+    padding: 26px 30px;
+    border: 1px solid rgba(246, 210, 138, .65);
+    border-left: 4px solid #c20d0d;
+    border-radius: 14px;
+    background: linear-gradient(125deg, rgba(72, 30, 15, .72), rgba(15, 8, 6, .92));
+    box-shadow: 0 8px 28px rgba(0,0,0,.35),
+                inset 0 0 24px rgba(246,210,138,.04);
+}
+
+.news-label {
+    display: inline-block;
+    margin-bottom: 12px;
+    padding: 5px 12px;
+    border: 1px solid rgba(246,210,138,.55);
+    border-radius: 20px;
+    color: var(--gold);
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.news-card h3 {
+    margin: 0 0 12px;
+    color: #ffe3a8;
+    font-size: clamp(23px, 3vw, 32px);
+    font-weight: normal;
+}
+
+.news-card p {
+    margin: 0;
+    color: #eadcc8;
+    font-size: 18px;
+    line-height: 1.75;
+}
+
+.news-card .news-signature {
+    margin-top: 16px;
+    color: #d8b77b;
+    font-style: italic;
+    text-align: right;
+}
+
+@media (max-width: 650px) {
+    .news-card {
+        padding: 20px 18px;
+    }
+
+    .news-card p {
+        font-size: 16px;
+    }
+}
+
+/* ОТЗЫВЫ ЧИТАТЕЛЕЙ */
+
+.reviews-card {
+    margin: 18px 0 8px;
+    padding: 24px;
+    border: 1px solid #9d6b32;
+    border-radius: 16px;
+    background: linear-gradient(135deg, rgba(55,24,13,.92), rgba(12,8,7,.96));
+    box-shadow: 0 8px 26px rgba(0,0,0,.35);
+}
+
+.reviews-card h3 {
+    margin: 0 0 10px;
+    color: var(--gold);
+    font-size: 25px;
+}
+
+.reviews-card p {
+    color: #eadcc8;
+    line-height: 1.7;
+    font-size: 17px;
+}
+
+.review-button {
+    display: inline-block;
+    margin-top: 8px;
+    padding: 13px 23px;
+    border: 1px solid #f6d28a;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 17px;
+    font-weight: bold;
+    background: linear-gradient(135deg, #a5100b, #4b0805);
+    box-shadow: 0 0 14px rgba(246,210,138,.18);
+    transition: .25s ease;
+}
+
+.review-button:hover {
+    color: var(--gold);
+    transform: translateY(-2px);
+    box-shadow: 0 0 22px rgba(246,210,138,.38);
+}
+
+.reviews-note {
+    display: block;
+    margin-top: 12px;
+    color: #bda47e;
+    font-size: 14px;
+}
+
+@media (max-width: 650px) {
+    .reviews-card {
+        padding: 18px;
+    }
+
+    .reviews-card h3 {
+        font-size: 21px;
+    }
+
+    .review-button {
+        width: 100%;
+        text-align: center;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <img class="author-photo" src="author.jpg" alt="Николай Горелков">
+
+    <div class="brand">
+        <h1>Николай Горелков</h1>
+        <p>АВТОР СОВРЕМЕННЫХ РОМАНОВ</p>
+    </div>
+
+    <nav>
+        <a href="#home">Главная</a>
+        <a href="#books">Мои книги</a>
+        <a href="#videos">Видео-анонсы</a>
+        <a href="#about">Об авторе</a>
+        <a href="#news">Новости</a>
+        <a href="#reviews">💬 Отзывы</a>
+        <a href="#contacts">Контакты</a>
+    </nav>
+
+    <div class="tagline">
+        Истории о любви, выборе, предательстве и силе,<br>
+        которая всегда живёт в человеке…
+    </div>
+
+    <a href="#books" class="start-reading">📖 Начать читать</a>
+</header>
+
+<main class="wrap" id="home">
+
+    <div class="columns">
+
+        <!-- МОИ КНИГИ -->
+
+        <section id="books">
+            <h2 class="section-title"><span>📚</span>Мои книги</h2>
+
+            <div class="books">
+
+                <div class="book">
+                    <img src="book1.png" alt="Девушка, которую он скрывал">
+                    <a href="books/devushka-kotoruyu-on-skryval.html">📖 Читать книгу</a>
+                </div>
+
+                <div class="book">
+                    <img src="book2.png" alt="Измена души">
+                    <a href="books/izmena-dushi.html">📖 Читать книгу</a>
+                </div>
+
+                <div class="book">
+                    <img src="book3.png" alt="Несвободная">
+                    <a href="books/nesvobodnaya.html">📖 Читать книгу</a>
+                </div>
+
+                <div class="book">
+                    <img src="book4.png" alt="Объятия верности">
+                    <a href="books/obyatiya-vernosti.html">📖 Читать книгу</a>
+                </div>
+
+                <div class="book">
+                    <img src="book5.png" alt="Осознанный выбор">
+                    <a href="books/osoznanny-vybor.html">📖 Читать книгу</a>
+                </div>
+
+                <div class="book">
+                    <img src="book6.png" alt="Право на счастье">
+                    <a href="books/pravo-na-schastye.html">📖 Читать книгу</a>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ВИДЕО-АНОНСЫ -->
+
+        <section id="videos">
+            <h2 class="section-title"><span>🎬</span>Видео-анонсы книг</h2>
+
+            <div class="video-feature">
+                <video controls poster="book4.png">
+                    <source src="videos/obyatiya.mp4" type="video/mp4">
+                    Ваш браузер не поддерживает видео.
+                </video>
+            </div>
+
+            <div class="video-thumbs">
+
+                <video controls poster="book1.png">
+                    <source src="videos/devushka.mp4" type="video/mp4">
+                </video>
+
+                <video controls poster="book2.png">
+                    <source src="videos/izmena.mp4" type="video/mp4">
+                </video>
+
+                <video controls poster="book3.png">
+                    <source src="videos/nesvobodnaya.mp4" type="video/mp4">
+                </video>
+
+                <video controls poster="book5.png">
+                    <source src="videos/osoznanny-vybor.mp4" type="video/mp4">
+                </video>
+
+                <video controls poster="book6.png">
+                    <source src="videos/pravo-na-schastye.mp4" type="video/mp4">
+                </video>
+
+            </div>
+        </section>
+
+    </div>
+
+    <!-- ПАНЕЛЬ ВОЗМОЖНОСТЕЙ -->
+
+    <div class="features">
+
+        <div class="feature">
+            <span class="ico">📖</span>
+            <div>
+                <strong>Читать онлайн</strong>
+                <small>Полные тексты моих книг</small>
+            </div>
+        </div>
+
+        <div class="feature">
+            <span class="ico">🎬</span>
+            <div>
+                <strong>Смотреть анонсы</strong>
+                <small>Атмосферные видео-нарезки</small>
+            </div>
+        </div>
+
+        <div class="feature">
+            <span class="ico">💬</span>
+            <div>
+                <strong>Обсуждать</strong>
+                <small>Отзывы и впечатления читателей</small>
+            </div>
+        </div>
+
+        <div class="feature">
+            <span class="ico">✨</span>
+            <div>
+                <strong>Следить за новостями</strong>
+                <small>Новые главы, проекты и премьеры</small>
+            </div>
+        </div>
+
+    </div>    <!-- ОБ АВТОРЕ -->
+
+    <section id="about">
+        <h2 class="section-title"><span>✍️</span>Об авторе</h2>
+
+        <div class="about">
+            <p>
+                Меня зовут Николай Горелков. Я пишу современные романы
+                о любви, сложных отношениях, человеческих чувствах и
+                непростых жизненных выборах.
+            </p>
+
+            <p>
+                В моих историях герои сталкиваются с предательством,
+                внутренними противоречиями, сильными эмоциями и
+                обстоятельствами, которые меняют их судьбы.
+            </p>
+
+            <p>
+                Для меня каждая книга — это возможность рассказать
+                историю, в которой читатель сможет узнать себя,
+                задуматься о важном и почувствовать, что даже после
+                самых трудных испытаний всегда остаётся право на счастье.
+            </p>
+        </div>
+    </section>
+
+    <!-- НОВОСТИ -->
+
+    <section id="news">
+        <h2 class="section-title"><span>📰</span>Новости автора</h2>
+
+        <article class="news-card">
+            <div class="news-label">В работе · Новая книга</div>
+
+            <h3>Седьмая книга уже рождается…</h3>
+
+            <p>
+                За каждой новой историей стоит особый мир — со своими
+                героями, тайнами, чувствами и решениями, которые способны
+                изменить целую жизнь.
+            </p>
+
+            <p>
+                Сейчас я работаю над своей <strong>седьмой книгой</strong>.
+                Постепенно складываются характеры героев, развиваются
+                события и рождается история, которой совсем скоро
+                предстоит встретиться с читателями.
+            </p>
+
+            <p>
+                Пока не буду раскрывать все секреты. Но могу обещать:
+                впереди новые эмоции, непростые выборы и история,
+                в которую хочется погрузиться с первой страницы.
+            </p>
+
+            <p class="news-signature">
+                Спасибо, что остаётесь со мной. Продолжение следует…
+            </p>
+        </article>
+    </section>
+
+    <!-- ОТЗЫВЫ ЧИТАТЕЛЕЙ -->
+
+    <section id="reviews">
+        <h2 class="section-title"><span>💬</span>Отзывы читателей</h2>
+
+        <div class="reviews-card">
+            <h3>Поделитесь впечатлениями о книге</h3>
+
+            <p>
+                Мне очень важно знать, какие эмоции вызывают мои истории,
+                какие герои запоминаются и что остаётся в душе после
+                прочтения.
+            </p>
+
+            <p>
+                Если вы уже прочитали одну из моих книг, буду благодарен
+                за ваш отзыв. Ваши слова помогают мне становиться лучше
+                и вдохновляют на новые истории.
+            </p>
+
+            <a
+                class="review-button"
+                href="https://docs.google.com/forms/d/e/1FAIpQLSexvf0861edfLxS-d8mFeQT2IS_Eu4wh_vXupjyFNVLSEDtIQ/viewform?usp=publish-editor"
+                target="_blank"
+                rel="noopener noreferrer">
+                ✍️ Оставить отзыв
+            </a>
+
+            <small class="reviews-note">
+                Отзыв откроется в Google Forms. Спасибо за ваше мнение!
+            </small>
+        </div>
+    </section>
+
+    <!-- КОНТАКТЫ -->
+
+    <section id="contacts">
+        <h2 class="section-title"><span>📩</span>Контакты</h2>
+
+        <div class="about contact-links">
+            <p>
+                По вопросам сотрудничества, отзывов и общения:
+            </p>
+
+            <p>
+                <a href="mailto:ngorelkov@gmail.com">
+                    ngorelkov@gmail.com
+                </a>
+            </p>
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    © Николай Горелков · Авторский сайт · Все права защищены
+</footer>
+
+</body>
+</html>
