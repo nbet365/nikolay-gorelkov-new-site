@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
@@ -13,9 +13,13 @@
     --line: #9d6b32;
 }
 
-* { box-sizing: border-box; }
+* {
+    box-sizing: border-box;
+}
 
-html { scroll-behavior: smooth; }
+html {
+    scroll-behavior: smooth;
+}
 
 body {
     margin: 0;
@@ -37,6 +41,8 @@ a {
     margin: auto;
     padding: 0 24px;
 }
+
+/* ШАПКА */
 
 header {
     position: relative;
@@ -82,6 +88,8 @@ header {
     font-size: 17px;
 }
 
+/* МЕНЮ */
+
 nav {
     display: flex;
     justify-content: center;
@@ -104,6 +112,8 @@ nav a:hover {
     color: var(--gold);
 }
 
+/* СЛОГАН */
+
 .tagline {
     max-width: 750px;
     margin: 17px auto 20px;
@@ -125,7 +135,38 @@ nav a:hover {
     transform: rotate(-2deg);
 }
 
-main { padding: 0 0 24px; }
+/* КНОПКА НАЧАТЬ ЧИТАТЬ */
+
+.start-reading {
+    display: table;
+    margin: 18px auto 22px;
+    padding: 15px 38px;
+    border: 1px solid #ffe7a6;
+    border-radius: 40px;
+    color: #1b0b03;
+    background: linear-gradient(135deg, #fff0bd, #e8ad4c, #ffd980);
+    font-size: 22px;
+    font-weight: bold;
+    text-align: center;
+    box-shadow:
+        0 0 12px rgba(255,190,75,.45),
+        0 0 25px rgba(255,150,30,.2);
+    transition: all .3s ease;
+}
+
+.start-reading:hover {
+    transform: translateY(-3px) scale(1.04);
+    box-shadow:
+        0 0 16px rgba(255,230,160,.9),
+        0 0 32px rgba(255,170,50,.65);
+    background: linear-gradient(135deg, #fff7d8, #f4c15e, #ffe8a0);
+}
+
+/* ОСНОВНОЙ БЛОК */
+
+main {
+    padding: 0 0 24px;
+}
 
 .columns {
     display: grid;
@@ -147,6 +188,8 @@ main { padding: 0 0 24px; }
     margin-right: 12px;
 }
 
+/* КНИГИ */
+
 .books {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -161,6 +204,7 @@ main { padding: 0 0 24px; }
     min-height: 270px;
     background: #160c09;
     box-shadow: 0 0 12px #000;
+    transition: transform .35s ease, box-shadow .35s ease, border-color .35s ease;
 }
 
 .book img {
@@ -185,38 +229,65 @@ main { padding: 0 0 24px; }
     font-size: 15px;
 }
 
-.book a:hover { filter: brightness(1.25); }
-
-.video-feature {
-    position: relative;
-    border: 2px solid var(--gold);
-    border-radius: 14px;
-    overflow: hidden;
-    margin-bottom: 14px;
-    background: #160c09;
+.book a:hover {
+    filter: brightness(1.25);
 }
 
-.video-feature video {
+.book:hover {
+    transform: translateY(-6px) scale(1.025);
+    border-color: #ffe7a6;
+    animation: goldGlow 1.8s ease-in-out infinite alternate;
+}
+
+@keyframes goldGlow {
+    0% {
+        box-shadow:
+            0 0 7px rgba(255,215,130,.65),
+            0 0 16px rgba(255,174,55,.45),
+            0 0 28px rgba(255,115,20,.2);
+    }
+    100% {
+        box-shadow:
+            0 0 12px rgba(255,235,170,1),
+            0 0 28px rgba(255,174,55,.9),
+            0 0 45px rgba(255,115,20,.5);
+    }
+}
+
+/* ВИДЕО — 6 ОДИНАКОВЫХ КАРТОЧЕК */
+
+.video-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.video-card {
+    min-width: 0;
+    overflow: hidden;
+    border: 2px solid var(--gold);
+    border-radius: 14px;
+    background: #160c09;
+    box-shadow: 0 0 12px #000;
+}
+
+.video-card video {
     display: block;
     width: 100%;
     aspect-ratio: 16 / 9;
-    object-fit: cover;
+    object-fit: contain;
+    background: #000;
 }
 
-.video-thumbs {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
+.video-card p {
+    margin: 0;
+    padding: 10px 8px;
+    color: var(--gold);
+    text-align: center;
+    font-size: 16px;
 }
 
-.video-thumbs video {
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    object-fit: cover;
-    border: 1px solid #b98b55;
-    border-radius: 10px;
-    background: #160c09;
-}
+/* ПАНЕЛЬ ВОЗМОЖНОСТЕЙ */
 
 .features {
     display: grid;
@@ -236,7 +307,9 @@ main { padding: 0 0 24px; }
     border-right: 1px solid var(--line);
 }
 
-.feature:last-child { border: 0; }
+.feature:last-child {
+    border: 0;
+}
 
 .feature .ico {
     font-size: 34px;
@@ -255,9 +328,12 @@ main { padding: 0 0 24px; }
     margin-top: 3px;
 }
 
+/* ОБ АВТОРЕ, НОВОСТИ, КОНТАКТЫ */
+
 #about,
 #contacts,
-#news {
+#news,
+#reviews {
     padding: 30px 0;
     border-bottom: 1px solid #6b4828;
 }
@@ -269,160 +345,7 @@ main { padding: 0 0 24px; }
     color: #eadcc8;
 }
 
-.contact-links a {
-    color: var(--gold);
-    font-size: 19px;
-    text-decoration: underline;
-}
-
-.contact-links a:hover { color: #fff; }
-
-footer {
-    text-align: center;
-    padding: 18px;
-    color: #bda47e;
-    font-size: 14px;
-}
-
-@media (max-width: 1000px) {
-    .columns { grid-template-columns: 1fr; }
-
-    .author-photo {
-        width: 230px;
-        height: 220px;
-    }
-
-    .brand { margin-left: 210px; }
-    nav { margin-left: 0; }
-    .books { grid-template-columns: repeat(3, 1fr); }
-}
-
-@media (max-width: 650px) {
-    .wrap { padding: 0 12px; }
-    header { min-height: 230px; }
-
-    .author-photo {
-        width: 130px;
-        height: 155px;
-        opacity: .9;
-        object-position: center 15%;
-    }
-
-    .brand {
-        margin-left: 90px;
-        padding-top: 15px;
-    }
-
-    .brand h1 {
-        font-size: 25px;
-        letter-spacing: 1px;
-    }
-
-    .brand p {
-        font-size: 10px;
-        letter-spacing: 2px;
-    }
-
-    nav { margin: 12px 0 0; }
-
-    nav a {
-        padding: 9px 10px;
-        font-size: 14px;
-    }
-
-    .tagline {
-        font-size: 18px;
-        margin: 15px auto;
-    }
-
-    .section-title { font-size: 25px; }
-
-    .books {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 10px;
-    }
-
-    .book,
-    .book img { min-height: 230px; }
-
-    .book a {
-        font-size: 12px;
-        padding: 7px 10px;
-    }
-
-    .video-thumbs { grid-template-columns: repeat(2, 1fr); }
-
-    .features {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
-    }
-
-    .feature {
-        border: 0;
-        justify-content: flex-start;
-    }
-
-    .feature strong { font-size: 16px; }
-    .feature small { font-size: 12px; }
-}
-
-/* Золотое свечение обложек */
-
-.book {
-    transition: transform .35s ease, box-shadow .35s ease, border-color .35s ease;
-}
-
-.book:hover {
-    transform: translateY(-6px) scale(1.025);
-    border-color: #ffe7a6;
-    animation: goldGlow 1.8s ease-in-out infinite alternate;
-}
-
-@keyframes goldGlow {
-    0% {
-        box-shadow: 0 0 7px rgba(255,215,130,.65),
-                    0 0 16px rgba(255,174,55,.45),
-                    0 0 28px rgba(255,115,20,.2);
-    }
-    100% {
-        box-shadow: 0 0 12px rgba(255,235,170,1),
-                    0 0 28px rgba(255,174,55,.9),
-                    0 0 45px rgba(255,115,20,.5);
-    }
-}
-
-/* Кнопка «Начать читать» */
-
-.start-reading {
-    display: table;
-    margin: 18px auto 22px;
-    padding: 15px 38px;
-    border: 1px solid #ffe7a6;
-    border-radius: 40px;
-    color: #1b0b03;
-    background: linear-gradient(135deg, #fff0bd, #e8ad4c, #ffd980);
-    font-size: 22px;
-    font-weight: bold;
-    text-decoration: none;
-    text-align: center;
-    box-shadow: 0 0 12px rgba(255,190,75,.45),
-                0 0 25px rgba(255,150,30,.2);
-    transition: all .3s ease;
-}
-
-.start-reading:hover {
-    transform: translateY(-3px) scale(1.04);
-    box-shadow: 0 0 16px rgba(255,230,160,.9),
-                0 0 32px rgba(255,170,50,.65);
-    background: linear-gradient(135deg, #fff7d8, #f4c15e, #ffe8a0);
-}
-
-@media (max-width: 600px) {
-    .start-reading {
-        font-size: 18px;
-        padding: 12px 25px;
-    }
-}/* НОВОСТЬ О СЕДЬМОЙ КНИГЕ */
+/* НОВОСТЬ О СЕДЬМОЙ КНИГЕ */
 
 .news-card {
     position: relative;
@@ -433,8 +356,9 @@ footer {
     border-left: 4px solid #c20d0d;
     border-radius: 14px;
     background: linear-gradient(125deg, rgba(72, 30, 15, .72), rgba(15, 8, 6, .92));
-    box-shadow: 0 8px 28px rgba(0,0,0,.35),
-                inset 0 0 24px rgba(246,210,138,.04);
+    box-shadow:
+        0 8px 28px rgba(0,0,0,.35),
+        inset 0 0 24px rgba(246,210,138,.04);
 }
 
 .news-label {
@@ -457,7 +381,7 @@ footer {
 }
 
 .news-card p {
-    margin: 0;
+    margin: 0 0 12px;
     color: #eadcc8;
     font-size: 18px;
     line-height: 1.75;
@@ -470,17 +394,7 @@ footer {
     text-align: right;
 }
 
-@media (max-width: 650px) {
-    .news-card {
-        padding: 20px 18px;
-    }
-
-    .news-card p {
-        font-size: 16px;
-    }
-}
-
-/* ОТЗЫВЫ ЧИТАТЕЛЕЙ */
+/* ОТЗЫВЫ */
 
 .reviews-card {
     margin: 18px 0 8px;
@@ -530,7 +444,155 @@ footer {
     font-size: 14px;
 }
 
+.contact-links a {
+    color: var(--gold);
+    font-size: 19px;
+    text-decoration: underline;
+}
+
+.contact-links a:hover {
+    color: #fff;
+}
+
+/* ПОДВАЛ */
+
+footer {
+    text-align: center;
+    padding: 18px;
+    color: #bda47e;
+    font-size: 14px;
+}
+
+/* АДАПТАЦИЯ */
+
+@media (max-width: 1000px) {
+    .columns {
+        grid-template-columns: 1fr;
+    }
+
+    .author-photo {
+        width: 230px;
+        height: 220px;
+    }
+
+    .brand {
+        margin-left: 210px;
+    }
+
+    nav {
+        margin-left: 0;
+    }
+
+    .books {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
 @media (max-width: 650px) {
+    .wrap {
+        padding: 0 12px;
+    }
+
+    header {
+        min-height: 230px;
+    }
+
+    .author-photo {
+        width: 130px;
+        height: 155px;
+        opacity: .9;
+        object-position: center 15%;
+    }
+
+    .brand {
+        margin-left: 90px;
+        padding-top: 15px;
+    }
+
+    .brand h1 {
+        font-size: 25px;
+        letter-spacing: 1px;
+    }
+
+    .brand p {
+        font-size: 10px;
+        letter-spacing: 2px;
+    }
+
+    nav {
+        margin: 12px 0 0;
+    }
+
+    nav a {
+        padding: 9px 10px;
+        font-size: 14px;
+    }
+
+    .tagline {
+        font-size: 18px;
+        margin: 15px auto;
+    }
+
+    .start-reading {
+        font-size: 18px;
+        padding: 12px 25px;
+    }
+
+    .section-title {
+        font-size: 25px;
+    }
+
+    .books {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+    }
+
+    .book,
+    .book img {
+        min-height: 230px;
+    }
+
+    .book a {
+        font-size: 12px;
+        padding: 7px 10px;
+    }
+
+    .video-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+    }
+
+    .video-card p {
+        font-size: 13px;
+        padding: 8px 5px;
+    }
+
+    .features {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .feature {
+        border: 0;
+        justify-content: flex-start;
+    }
+
+    .feature strong {
+        font-size: 16px;
+    }
+
+    .feature small {
+        font-size: 12px;
+    }
+
+    .news-card {
+        padding: 20px 18px;
+    }
+
+    .news-card p {
+        font-size: 16px;
+    }
+
     .reviews-card {
         padding: 18px;
     }
@@ -547,9 +609,7 @@ footer {
 </style>
 </head>
 
-<body>
-
-<header>
+<body><header>
     <img class="author-photo" src="author.jpg" alt="Николай Горелков">
 
     <div class="brand">
@@ -582,76 +642,113 @@ footer {
         <!-- МОИ КНИГИ -->
 
         <section id="books">
-            <h2 class="section-title"><span>📚</span>Мои книги</h2>
+            <h2 class="section-title">
+                <span>📚</span>Мои книги
+            </h2>
 
             <div class="books">
 
                 <div class="book">
                     <img src="book1.png" alt="Девушка, которую он скрывал">
-                    <a href="books/devushka-kotoruyu-on-skryval.html">📖 Читать книгу</a>
+                    <a href="books/devushka-kotoruyu-on-skryval.html">
+                        📖 Читать книгу
+                    </a>
                 </div>
 
                 <div class="book">
                     <img src="book2.png" alt="Измена души">
-                    <a href="books/izmena-dushi.html">📖 Читать книгу</a>
+                    <a href="books/izmena-dushi.html">
+                        📖 Читать книгу
+                    </a>
                 </div>
 
                 <div class="book">
                     <img src="book3.png" alt="Несвободная">
-                    <a href="books/nesvobodnaya.html">📖 Читать книгу</a>
+                    <a href="books/nesvobodnaya.html">
+                        📖 Читать книгу
+                    </a>
                 </div>
 
                 <div class="book">
                     <img src="book4.png" alt="Объятия верности">
-                    <a href="books/obyatiya-vernosti.html">📖 Читать книгу</a>
+                    <a href="books/obyatiya-vernosti.html">
+                        📖 Читать книгу
+                    </a>
                 </div>
 
                 <div class="book">
                     <img src="book5.png" alt="Осознанный выбор">
-                    <a href="books/osoznanny-vybor.html">📖 Читать книгу</a>
+                    <a href="books/osoznanny-vybor.html">
+                        📖 Читать книгу
+                    </a>
                 </div>
 
                 <div class="book">
                     <img src="book6.png" alt="Право на счастье">
-                    <a href="books/pravo-na-schastye.html">📖 Читать книгу</a>
+                    <a href="books/pravo-na-schastye.html">
+                        📖 Читать книгу
+                    </a>
                 </div>
 
             </div>
         </section>
 
-        <!-- ВИДЕО-АНОНСЫ -->
+        <!-- ВИДЕО-АНОНСЫ: 6 ОДИНАКОВЫХ КАРТОЧЕК -->
 
         <section id="videos">
-            <h2 class="section-title"><span>🎬</span>Видео-анонсы книг</h2>
+            <h2 class="section-title">
+                <span>🎬</span>Видео-анонсы книг
+            </h2>
 
-            <div class="video-feature">
-                <video controls poster="book4.png">
-                    <source src="videos/obyatiya.mp4" type="video/mp4">
-                    Ваш браузер не поддерживает видео.
-                </video>
-            </div>
+            <div class="video-grid">
 
-            <div class="video-thumbs">
+                <div class="video-card">
+                    <video controls preload="metadata" playsinline>
+                        <source src="videos/devushka.mp4" type="video/mp4">
+                        Ваш браузер не поддерживает видео.
+                    </video>
+                    <p>Девушка, которую он скрывал</p>
+                </div>
 
-                <video controls poster="book1.png">
-                    <source src="videos/devushka.mp4" type="video/mp4">
-                </video>
+                <div class="video-card">
+                    <video controls preload="metadata" playsinline>
+                        <source src="videos/sizmena.mp4" type="video/mp4">
+                        Ваш браузер не поддерживает видео.
+                    </video>
+                    <p>Измена души</p>
+                </div>
 
-                <video controls poster="book2.png">
-                    <source src="videos/izmena.mp4" type="video/mp4">
-                </video>
+                <div class="video-card">
+                    <video controls preload="metadata" playsinline>
+                        <source src="videos/snesvobodnaya.mp4" type="video/mp4">
+                        Ваш браузер не поддерживает видео.
+                    </video>
+                    <p>Несвободная</p>
+                </div>
 
-                <video controls poster="book3.png">
-                    <source src="videos/nesvobodnaya.mp4" type="video/mp4">
-                </video>
+                <div class="video-card">
+                    <video controls preload="metadata" playsinline>
+                        <source src="videos/obyatiya.mp4" type="video/mp4">
+                        Ваш браузер не поддерживает видео.
+                    </video>
+                    <p>Объятия верности</p>
+                </div>
 
-                <video controls poster="book5.png">
-                    <source src="videos/osoznanny-vybor.mp4" type="video/mp4">
-                </video>
+                <div class="video-card">
+                    <video controls preload="metadata" playsinline>
+                        <source src="videos/osoznanny-vybor.mp4" type="video/mp4">
+                        Ваш браузер не поддерживает видео.
+                    </video>
+                    <p>Осознанный выбор</p>
+                </div>
 
-                <video controls poster="book6.png">
-                    <source src="videos/pravo-na-schastye.mp4" type="video/mp4">
-                </video>
+                <div class="video-card">
+                    <video controls preload="metadata" playsinline>
+                        <source src="videos/pravo-na-schastye.mp4" type="video/mp4">
+                        Ваш браузер не поддерживает видео.
+                    </video>
+                    <p>Право на счастье</p>
+                </div>
 
             </div>
         </section>
